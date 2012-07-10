@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/webapp</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>true</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>/epgtag1</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/EPGTagLib1/bin</webClassPathEntry>
+        <webClassPathEntry>/EPGTagLib1/lib/commons-lang-2.1.jar</webClassPathEntry>
+        <webClassPathEntry>/EPGTagLib1/lib/commons-logging.jar</webClassPathEntry>
+        <webClassPathEntry>/EPGTagLib1/lib/cssparser-0.9.5.jar</webClassPathEntry>
+        <webClassPathEntry>/EPGTagLib1/lib/sac.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>
