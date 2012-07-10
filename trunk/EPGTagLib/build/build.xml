@@ -1,0 +1,58 @@
+<project name="EPG_Tags" basedir="../" default="jar">
+	<property file="build/build.properties" />
+
+	<tstamp prefix="build">
+		<format property="date" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<path id="project.class.path">
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${tomcat.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!--删除原有的目录-->
+	<target name="clean">
+		<delete dir="${dest.dir}" />
+		<delete dir="${release.dir}" />
+	</target>
+
+	<!--新建编译程序目录-->
+	<target name="init">
+		<mkdir dir="${dest.dir}" />
+		<!--<mkdir dir="${release.dir}" />-->
+	</target>
+
+	<target name="compile" depends="clean,init">
+		<javac srcdir="src" source="1.5" destdir="${dest.dir}" debug="on" encoding="UTF-8">
+			<classpath refid="project.class.path" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${jar.dir}/${jar.name}-${version}.jar">
+			<fileset dir="${dest.dir}" >
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="webapp">
+				<include name="**/*.tld" />
+				<include name="**/*.vm" />
+			</fileset>
+			
+			<manifest>
+				<attribute name="Built-By" value="Chenxx,Zhangxs" />
+				<section name="common">
+					<attribute name="Specification-Title" value="Chances EPG tags" />
+					<attribute name="Specification-Version" value="${version}" />
+					<attribute name="Specification-Vendor" value="Shanghai Chances Information Tech Co,. Ltd." />
+					<attribute name="Implementation-Title" value="Chances EPG tags" />
+					<attribute name="Implementation-Version" value="${version}" />
+					<attribute name="Implementation-Vendor" value="Shanghai Chances Information Tech Co,. Ltd." />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+</project>
